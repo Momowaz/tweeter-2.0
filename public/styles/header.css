@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    height: 520px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0d5a8;
+    background-image: url("https://www.transparenttextures.com/patterns/binding-dark.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.avatar {
+    justify-content: center;
+    align-items: center;
+}
