@@ -61,7 +61,7 @@
     </header>
 
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main id="tweets-container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form class="form" action="/tweets" method="post">
@@ -83,24 +83,7 @@
         </form>
       </section>
 
-      <section class="article-container">
-        <article class="article.tweet">
-          <header class="tweet-header">
-            <span><i class="fa-solid fa-user"></i> Newton</span>
-            <span>@SirIsaac</span>
-          </header>
-          <p class="msg">
-            Congratulations! You just posted your first tweet of the day!
-          </p>
-          <footer class="tweet-footer">
-            10 days ago
-            <span class="icons">
-              <i class="fa-solid fa-flag"></i>
-              <i class="fa-solid fa-repeat"></i>
-              <i class="fa-solid fa-heart"></i>
-            </span>
-          </footer>
-        </article>
+      <section class="tweets-container">
       </section>
     </main>
   </body>
