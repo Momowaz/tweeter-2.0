@@ -4,6 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function () {
+
+    
     const data = [
         {
             user: {
@@ -63,5 +65,16 @@ $(document).ready(function () {
         return $tweet;
     };
 
+    $("#form").on("submit", function(event) {
+        // alert('submitted');
+        
+        event.preventDefault();
+        const tweetData = $( this ).serialize();
+        $.post('/tweets', {text: tweetData}) 
+        .done( (response) => { 
+            console.log(response);
+        })
+        
+    });
     renderTweets(data);
 });
