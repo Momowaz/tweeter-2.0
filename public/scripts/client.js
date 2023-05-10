@@ -10,9 +10,11 @@ $(document).ready(function () {
         // calls createTweetElement for each tweet
         // takes return value and appends it to the tweets container
         const $tweetContainer = $(".tweets-container");
+        $tweetContainer.empty();
+
         for (const tweet of tweets) {
             const $tweet = createTweetElement(tweet);
-            $tweetContainer.append($tweet);
+            $tweetContainer.prepend($tweet);
             $tweet.find('.timeago').timeago("update", new Date());
         }
     };
@@ -53,8 +55,7 @@ $(document).ready(function () {
         if (!tweetContent) {
             alert('Error: Tweet content is empty');
             return;
-        }
-        if (tweetContent.length > 140) {
+        } else if (tweetContent.length > 140) {
             alert('Error: Tweet content exceeds 140 characters');
             return;
         }
@@ -62,8 +63,16 @@ $(document).ready(function () {
         $.post('/tweets', $form.serialize()) 
         .done( (response) => { 
             console.log(response);
+            loadTweets();
+            $("#form")[0].reset(); // Clear the form input
+            $("#counter").text("140"); // Reset the character counter
+            const $tweet = createTweetElement(response);
+            $(".tweets-container").prepend($tweet);
         })
-        $tweetContent.val("");
+        .fail(function(error) {
+            alert(error.message);
+        });
+        // $tweetContent.val("");
     });
 
     const loadTweets = function() {

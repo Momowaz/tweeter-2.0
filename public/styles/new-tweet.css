@@ -38,7 +38,6 @@ form {
 }
 
 #tweet-text {
-    margin-top: 15px;
     border: none;
     border-bottom: 4px solid;
     /* adjust the color and thickness as needed */
@@ -60,7 +59,12 @@ label {
     font-family: sans-serif;
     font-family: Bungee, sans-serif;
 }
-
+.header {
+    padding-top: 100px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+}
 .tweet-header {
 
     display: flex;
