@@ -27,7 +27,7 @@ $(document).ready(function () {
                     <span>${tweet.user.handle}</span>
                 </header>
                 <p class="msg">
-                    ${tweet.content.text}
+                    ${$('<div>').text(tweet.content.text).html()}
                 </p>
                 <footer class="tweet-footer" data-created-at="${tweet.created_at}">
                     <span class="timeago"></span>
