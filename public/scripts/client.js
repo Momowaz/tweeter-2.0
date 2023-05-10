@@ -5,6 +5,27 @@
  */
 $(document).ready(function () {
 
+    $(window).scroll(function() {
+        const scrollTop = $(this).scrollTop();
+        const $navButton = $('.new-tweet button');
+        const $scrollTopButton = $('.btn-scroll-top');
+      
+        if (scrollTop > 0) {
+          $navButton.hide();
+          $scrollTopButton.show();
+        } else {
+          $navButton.show();
+          $scrollTopButton.hide();
+        }
+      });
+      
+      $('.btn-scroll-top').click(function() {
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
+        $('.new-tweet').slideDown();
+        $('.new-tweet textarea').focus();
+      });
+      
+
     $('.new-tweet').hide();
 
     $('.newTweet').on('click', function() {
