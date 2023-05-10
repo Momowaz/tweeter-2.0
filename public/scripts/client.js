@@ -5,6 +5,13 @@
  */
 $(document).ready(function () {
 
+    $('.new-tweet').hide();
+
+    $('.newTweet').on('click', function() {
+        $('.new-tweet').slideToggle('slow', function() {
+            $('textarea').focus();
+        })
+    });
     const renderTweets = function (tweets) {
         // loops through tweets
         // calls createTweetElement for each tweet
