@@ -53,10 +53,10 @@ $(document).ready(function () {
         const tweetContent = $("#tweet-text").val();
 
         if (!tweetContent) {
-            alert('Error: Tweet content is empty');
+            $('#error-message').text('Error: Tweet content is empty').slideDown();
             return;
         } else if (tweetContent.length > 140) {
-            alert('Error: Tweet content exceeds 140 characters');
+            $('#error-message').text('Error: Tweet content exceeds 140 characters').slideDown();
             return;
         }
         
