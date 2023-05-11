@@ -43,7 +43,7 @@ $(document).ready(function () {
         for (const tweet of tweets) {
             const $tweet = createTweetElement(tweet);
             $tweetContainer.prepend($tweet);
-            $tweet.find('.timeago').timeago("update", new Date());
+            $tweet.find('.timeago').timeago("update", new Date(tweet.created_at));
         }
     };
 

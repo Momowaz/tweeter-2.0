@@ -24,10 +24,46 @@ body {
   font-family: 'Source Sans Pro';
 }
 
+/* .body-content {
+  display: flex;
+  flex-direction: column;
+} */
+
+@media only screen and (min-width: 1024px) {
+  #tweets-container {
+    float: right;
+    width: 50%;
+    padding-top: 150px;
+  }
+
+  .header {
+    float: left;
+    width: 25%;
+    margin-left: 15%;
+    margin-top: 190px;
+  }
+  /* .new-tweet {
+    width: 45%;
+  }
+  .tweets-container {
+    width: 50%;
+  } */
+}
+
+@media only screen and (max-width: 768px) {
+  .new-tweet,
+  .tweets-container {
+    width: 100%;
+  }
+}
+
+
 main {
-  width: 90%;
-  margin: 0 auto;
-  align-items: center;
+  /* display: flex; */
+  width: 70%;
+  /* margin: 0 auto; */
+  /* align-items: center; */
+  justify-content: flex-end;
   background-color: inherit;
 }
 

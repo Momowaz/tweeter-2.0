@@ -3,18 +3,41 @@
     flex-direction: column;
 }
 
-.tweets-container {
+.new-tweet {
     width: 100%;
-    margin-top: 40px;
-    margin-bottom: 40px;
+}
+
+.tweets-container {
+    width: 90%;
+    margin-top: 20px;
+    /* justify-content: flex-end; */
+    /* margin-bottom: 40px; */
     border-style: solid;
     border-width: thick;
     padding: 30px;
     transition: box-shadow .3s;
 }
 
-.tweets-container:hover {
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+@media only screen and (max-width: 1024px) and (min-width: 500px) {
+    .tweets-container {
+      margin-left: 5%;
+      width: 130%;
+    }
+    .new-tweet {
+        margin-left: 5%;
+        width: 145%;
+    }
+  }
+
+@media only screen and (min-width: 1024px) {
+    .tweets-container {
+        width: 90%;
+    margin-top: 20px;
+    border-style: solid;
+    border-width: thick;
+    padding: 30px;
+    transition: box-shadow .3s;
+    }
 }
 
 form {
@@ -22,9 +45,7 @@ form {
 
 }
 
-.new-tweet {
-    width: 100%;
-}
+
 
 .new-tweet-action {
     display: flex;
@@ -42,7 +63,7 @@ form {
     border-bottom: 4px solid;
     /* adjust the color and thickness as needed */
     padding: 5px;
-    width: 100%;
+    width: 90%;
     background-color: #c1c1c11e;
 
 }
