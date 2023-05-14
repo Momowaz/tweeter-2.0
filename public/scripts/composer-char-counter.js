@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    console.log('DOM is ready');
+    $('.counter').removeClass('counter-negative');
 });
 
 function countChar(val) {
@@ -7,7 +7,6 @@ function countChar(val) {
     let counter = document.querySelector('.counter');
     
     if (len >= 140) {
-     // val.value = val.value.substring(0, 140);
       counter.innerText = 0;
       counter.classList.add('counter-red');
     } else {

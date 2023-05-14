@@ -4,34 +4,32 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function () {
-
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         const scrollTop = $(this).scrollTop();
-        const $navButton = $('.new-tweet button');
-        const $scrollTopButton = $('.btn-scroll-top');
-      
+        const $navButton = $(".new-tweet button");
+        const $scrollTopButton = $(".btn-scroll-top");
+
         if (scrollTop > 0) {
-          $navButton.hide();
-          $scrollTopButton.show();
+            $navButton.hide();
+            $scrollTopButton.show();
         } else {
-          $navButton.show();
-          $scrollTopButton.hide();
+            $navButton.show();
+            $scrollTopButton.hide();
         }
-      });
-      
-      $('.btn-scroll-top').click(function() {
-        $('html, body').animate({ scrollTop: 0 }, 'fast');
-        $('.new-tweet').slideDown();
-        $('.new-tweet textarea').focus();
-      });
-      
+    });
 
-    $('.new-tweet').hide();
+    $(".btn-scroll-top").click(function () {
+        $("html, body").animate({ scrollTop: 0 }, "fast");
+        $(".new-tweet").slideDown();
+        $(".new-tweet textarea").focus();
+    });
 
-    $('.newTweet').on('click', function() {
-        $('.new-tweet').slideToggle('slow', function() {
-            $('textarea').focus();
-        })
+    $(".new-tweet").hide();
+
+    $(".newTweet").on("click", function () {
+        $(".new-tweet").slideToggle("slow", function () {
+            $("textarea").focus();
+        });
     });
     const renderTweets = function (tweets) {
         // loops through tweets
@@ -43,7 +41,7 @@ $(document).ready(function () {
         for (const tweet of tweets) {
             const $tweet = createTweetElement(tweet);
             $tweetContainer.prepend($tweet);
-            $tweet.find('.timeago').timeago("update", new Date(tweet.created_at));
+            $tweet.find(".timeago").timeago("update", new Date(tweet.created_at));
         }
     };
 
@@ -51,13 +49,15 @@ $(document).ready(function () {
         const $tweet = $(`
             <article class="tweet">
                 <header class="tweet-header">
-                    <span><img src="${tweet.user.avatars}" ${tweet.user.name}</span>
+                    <span><img src="${tweet.user.avatars}" ${tweet.user.name
+            }</span>
                     <span>${tweet.user.handle}</span>
                 </header>
                 <p class="msg">
-                    ${$('<div>').text(tweet.content.text).html()}
+                    ${$("<div>").text(tweet.content.text).html()}
                 </p>
-                <footer class="tweet-footer" data-created-at="${tweet.created_at}">
+                <footer class="tweet-footer" data-created-at="${tweet.created_at
+            }">
                     <span class="timeago"></span>
                     <span class="icons">
                         <i class="fa-solid fa-flag"></i>
@@ -66,54 +66,57 @@ $(document).ready(function () {
                     </span>
                 </footer>
             </article>`);
-    
+
         return $tweet;
     };
-    
 
-    $("#form").on("submit", function(event) {
-        // alert('submitted');
-        
+    $("#form").on("submit", function (event) {
         event.preventDefault();
-        
+
         const $form = $(this);
         const $tweetContent = $form.find('textarea[name="tweet"]');
         const tweetContent = $("#tweet-text").val();
 
         if (!tweetContent) {
-            $('#error-message').text('Error: Tweet content is empty').slideDown();
+            $("#error-message").text("Error: Tweet content is empty").slideDown();
+            setTimeout(function () {
+                $("#error-message").slideUp();
+            }, 3000); // hide the error message after 3 seconds
             return;
         } else if (tweetContent.length > 140) {
-            $('#error-message').text('Error: Tweet content exceeds 140 characters').slideDown();
+            $("#error-message")
+                .text("Error: Tweet content exceeds 140 characters")
+                .slideDown();
+            setTimeout(function () {
+                $("#error-message").slideUp();
+            }, 3000); // hide the error message after 3 seconds
             return;
         }
-        
-        $.post('/tweets', $form.serialize()) 
-        .done( (response) => { 
-            console.log(response);
-            loadTweets();
-            $("#form")[0].reset(); // Clear the form input
-            $("#counter").text("140"); // Reset the character counter
-            const $tweet = createTweetElement(response);
-            $(".tweets-container").prepend($tweet);
-        })
-        .fail(function(error) {
-            alert(error.message);
-        });
-        // $tweetContent.val("");
+
+        $.post("/tweets", $form.serialize())
+            .done((response) => {
+                console.log(response);
+                loadTweets();
+                $("#form")[0].reset(); // Clear the form input
+                $(".counter").text("140"); // Reset the character counter
+                const $tweet = createTweetElement(response);
+                $(".tweets-container").prepend($tweet);
+            })
+            .fail(function (error) {
+                alert(error.message);
+            });
     });
 
-    const loadTweets = function() {
-        $.getJSON('/tweets', function(data) {
-          // success callback function
-          console.log('Received JSON data:', data);
-          renderTweets(data);
-        }).fail(function(jqXHR, textStatus, errorThrown) {
-          // error callback function
-          console.error('Error loading tweets:', textStatus, errorThrown);
+    const loadTweets = function () {
+        $.getJSON("/tweets", function (data) {
+            // success callback function
+            renderTweets(data);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            // error callback function
+            console.error("Error loading tweets:", textStatus, errorThrown);
         });
-      };
-      
+    };
+
     loadTweets();
     renderTweets(data);
 });
