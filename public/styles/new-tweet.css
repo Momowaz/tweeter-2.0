@@ -3,49 +3,10 @@
     flex-direction: column;
 }
 
-.new-tweet {
-    width: 100%;
-}
-
-.tweets-container {
-    width: 90%;
-    margin-top: 20px;
-    /* justify-content: flex-end; */
-    /* margin-bottom: 40px; */
-    border-style: solid;
-    border-width: thick;
-    padding: 30px;
-    transition: box-shadow .3s;
-}
-
-@media only screen and (max-width: 1024px) and (min-width: 500px) {
-    .tweets-container {
-      margin-left: 5%;
-      width: 130%;
-    }
-    .new-tweet {
-        margin-left: 5%;
-        width: 145%;
-    }
-  }
-
-@media only screen and (min-width: 1024px) {
-    .tweets-container {
-        width: 90%;
-    margin-top: 20px;
-    border-style: solid;
-    border-width: thick;
-    padding: 30px;
-    transition: box-shadow .3s;
-    }
-}
-
 form {
     align-items: center;
 
 }
-
-
 
 .new-tweet-action {
     display: flex;
@@ -54,14 +15,13 @@ form {
 }
 
 .counter {
-    width: 80px;
+    width: 130px;
     font-family: sans-serif;
 }
 
 #tweet-text {
     border: none;
     border-bottom: 4px solid;
-    /* adjust the color and thickness as needed */
     padding: 5px;
     width: 90%;
     background-color: #c1c1c11e;
@@ -80,12 +40,7 @@ label {
     font-family: sans-serif;
     font-family: Bungee, sans-serif;
 }
-.header {
-    padding-top: 100px;
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-}
+
 .tweet-header {
 
     display: flex;
@@ -109,6 +64,5 @@ label {
 button {
     font-family: Bungee, sans-serif;
     background-color: #4056A1;
-    /* position: fixed; */
     color: #FFFFFF;
 }
